@@ -7,8 +7,7 @@ def search_map(area_map, right_amount, down_amount):
         if area_map[row][column] == "#":
             num_of_trees += 1
 
-        column += right_amount
-        column = column % len(area_map[0])
+        column = (column + right_amount) % len(area_map[0])
 
     print(f"Number of Trees: {num_of_trees}")
 
