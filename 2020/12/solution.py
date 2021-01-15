@@ -19,19 +19,21 @@ def process_actions(actions):
         if action == "F":
             print(action, value)
 
-            opposite_pointing_direction = compass_map[current_direction]
-            opposite_pointing_direction_value = directions[compass_map[current_direction]]
+            directions[current_direction] += value
 
-            if opposite_pointing_direction_value == 0:
-                directions[current_direction] += value
-
-            elif opposite_pointing_direction_value - value > 0:
-                directions[opposite_pointing_direction] = opposite_pointing_direction_value - value
-
-                directions[current_direction] += value
-            else:
-                directions[opposite_pointing_direction] = 0
-                directions[current_direction] += abs(opposite_pointing_direction_value - value)
+            # opposite_pointing_direction = compass_map[current_direction]
+            # opposite_pointing_direction_value = directions[compass_map[current_direction]]
+            #
+            # if opposite_pointing_direction_value == 0:
+            #     directions[current_direction] += value
+            #
+            # elif opposite_pointing_direction_value - value > 0:
+            #     directions[opposite_pointing_direction] = opposite_pointing_direction_value - value
+            #
+            #     directions[current_direction] += value
+            # else:
+            #     directions[opposite_pointing_direction] = 0
+            #     directions[current_direction] += abs(opposite_pointing_direction_value - value)
 
             print(directions)
 
@@ -47,21 +49,23 @@ def process_actions(actions):
             opposite_direction = compass_map[action]
             opposite_direction_value = directions[opposite_direction]
 
-            if opposite_direction_value == 0:
-                directions[action] += value
+            directions[action] += value
 
-            elif opposite_direction_value - value > 0:
-                # Subtract value from opposite direction
-                directions[opposite_direction] = opposite_direction_value - value
-
-                # Add value to current direction
-                directions[action] += value
-            else:
-                # Update opposite direction to 0
-                directions[opposite_direction] = 0
-
-                # Update curr direction with abs value
-                directions[action] += abs(opposite_direction_value - value)
+            # if opposite_direction_value == 0:
+            #     directions[action] += value
+            #
+            # elif opposite_direction_value - value > 0:
+            #     # Subtract value from opposite direction
+            #     directions[opposite_direction] = opposite_direction_value - value
+            #
+            #     # Add value to current direction
+            #     directions[action] += value
+            # else:
+            #     # Update opposite direction to 0
+            #     directions[opposite_direction] = 0
+            #
+            #     # Update curr direction with abs value
+            #     directions[action] += abs(opposite_direction_value - value)
 
             print(directions)
             # # Updates direction
@@ -96,7 +100,7 @@ def process_actions(actions):
         # if action == "F":
         #     directions[current_direction] += value - directions[current_direction]
     print(directions)
-    print(((abs(directions["N"] - directions["S"])) + abs(directions["E"] - directions["W"])))
+    print(abs(directions["N"] - directions["S"]) + abs(directions["E"] - directions["W"]))
 
 
 def change_direction(turn, degrees):
